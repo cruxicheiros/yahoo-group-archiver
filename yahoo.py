@@ -1,5 +1,6 @@
 #!/usr/bin/env python2
 from yahoogroupsapi import YahooGroupsAPI
+from config import Config
 import json
 import email
 import urllib
@@ -13,12 +14,13 @@ import requests
 import time
 import datetime
 
+configuration = Config.importIni()
 
 # number of seconds to wait before trying again
-HOLDOFF=10
+HOLDOFF = configuration[failure][failure_timeout]
 
 # max tries
-TRIES=10
+TRIES = configuration[failure][failure_tries]
 
 hp = HTMLParser()
 
